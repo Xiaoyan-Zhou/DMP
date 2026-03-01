@@ -84,7 +84,7 @@ class Multiprototypes(nn.Module):
             min_positive_distances, _ = positive_distances.min(dim=1, keepdim=True)
             for i in range(positive_distances.shape[0]):
                 sorted_values, sorted_indices = torch.sort(positive_distances[i])
-                if (self.num_centers > 1) and (self.get_entropy(sorted_values[:2]) > 0.95):
+                if (self.num_centers > 1) and (self.get_entropy(sorted_values[:2]) > 0.90):
                     mask[i] = False
             loss1 = min_positive_distances.mean()
             loss2 = min_positive_distances[mask].mean()
